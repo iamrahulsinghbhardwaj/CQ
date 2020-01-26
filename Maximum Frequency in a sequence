@@ -1,6 +1,6 @@
+// Frequency of each number in array
 #include <stdio.h>
 int find(int a[],int );
-/* Include other headers as needed */
 int main()
 {
   int cases,i,x,case1,j;
