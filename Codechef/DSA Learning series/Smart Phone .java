@@ -2,8 +2,6 @@
 Problem URL: https://www.codechef.com/LRNDSA01/problems/ZCO14003
 */
 
-/* package codechef; // don't place package name! */
-
 import java.util.*;
 import java.lang.*;
 import java.io.*;
