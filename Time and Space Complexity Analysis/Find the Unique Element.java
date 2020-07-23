@@ -19,6 +19,7 @@ public class Main {
 }
 
 //xor is associative it means we can write array of 1 2 3 1 3 as 1 1 3 3 1 and xor with itself is 0 
+// complexirt O(n)
 public class FindUnique{	
 
 	public static int findUnique(int[] arr){
