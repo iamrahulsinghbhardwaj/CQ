@@ -1,94 +1,60 @@
-
+package linkedList;
 
 import java.util.Scanner;
 
-public class Runner {
-	private static Scanner s = new Scanner(System.in);
-
-	public static void main(String[] args) {
-		System.out.println(Solution.printMiddel(input()) + "");
-	}
-	
-
-	public static LinkedListNode<Integer> input() {
+public class MiddlePointOfLL {
+	public static Node<Integer> takeInput(){
+		Node<Integer> head = null, tail = null;
+		Scanner s = new Scanner(System.in);
 		int data = s.nextInt();
-		
-		LinkedListNode<Integer> head = null;
-		LinkedListNode<Integer> tail = null;
-		while (data!=-1) {
-			LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
-			if (head == null) {
+				
+		while(data != -1){
+			Node<Integer> newNode = new Node<Integer>(data);
+			if(head == null){
 				head = newNode;
 				tail = newNode;
-			} else {
+			}else{
+//				Node<Integer> temp = head;
+//				while(temp.next != null){
+//					temp = temp.next;
+//				}
+//				temp.next = newNode;
 				tail.next = newNode;
-				tail = newNode;
+				tail = newNode; // tail = tail.next
 			}
 			data = s.nextInt();
 		}
 		return head;
 	}
-}
+	
+public static void print(Node<Integer> head){
+		
+		while(head != null){
+			System.out.print(head.data +" ");
+			head = head.next;
+		}
+		System.out.println();
 
-class LinkedListNode<T> {
-	public T data;
-	public LinkedListNode<T> next;
+	}
+	
+	public static Node<Integer> MidPoint(Node<Integer> head){
+		Node<Integer> slow=head , fast=head;
+		
+		while(fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			
+		}
+		return slow;
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		Node<Integer> head = takeInput();
+		Node<Integer> mid = MidPoint(head);
+		System.out.println(mid.data);
 
-	public LinkedListNode(T data) {
-		this.setData(data);
-		this.next = null;
 	}
 
-	public T getData() {
-		return data;
-	}
-
-	public void setData(T data) {
-		this.data = data;
-	}
-
-}
-
-
-
-public class Solution {
-	public static int printMiddel(LinkedListNode<Integer> head) {
-        
-        LinkedListNode<Integer> temp=head;
-        
-        int x=0;
-        int l=0;
-        while(temp!=null){
-            l++;
-            temp=temp.next;
-        }
-        
-        int slow=0;
-        int fast=0;
-        
-        if(l%2!=0){
-            while(head!=null){
-                if(fast==l/2){
-                    return x=head.data;
-                }
-                slow++;
-                fast++;
-                head=head.next;
-            }
-        }
-        else{
-            
-            while(head!=null){
-                if(fast==(l/2)-1){
-                    return x=head.data;
-                }
-                slow++;
-                fast++;
-                head=head.next;
-            }
-        }
-        
-        return -1;
-       
-    }
 }
